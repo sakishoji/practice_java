@@ -3,9 +3,14 @@ package breeding;
 /**
  * モンスタークラス
  */
-public class Monster {
-	Monster() {
 
+public class Monster {
+	Monster(){
+	}
+	
+	Monster(String name, int hp) {
+		this.name = name;
+		this.hp = hp;
 	}
 
 	/** 名前 */
@@ -15,13 +20,11 @@ public class Monster {
 	/** 体力の最大値 */
 	private final int MAX_HP = 100;
 
-	
-	
 	/**
 	 * 名前を取得
-	 * @return
+	 * @return name
 	 */
-	public String getName() {
+	 public String getName() {
 		return name;
 	}
 	
@@ -29,7 +32,7 @@ public class Monster {
 	 * 名前をセット
 	 * @param name
 	 */
-	public void setName(String name) {
+	 public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -37,7 +40,7 @@ public class Monster {
 	 * 体力を取得
 	 * @return hp
 	 */
-	public int getHp() {
+	 public int getHp() {
 		return hp;
 	}
 	
@@ -45,32 +48,35 @@ public class Monster {
 	 * 体力をセット
 	 * @param hp
 	 */
-	public void setHp(int hp) {
+	 public void setHp(int hp) {
 		this.hp = hp;
 	}
 
-	
-	/** コンソール */
-	Monster(String name, int hp) {
-		this.name = name;
-		this.hp = hp;
-	}
-
-	/** 名前を出力 */
-	public void talk() {
+	/**
+	 * 名前を出力
+	 * @param name 私の名前
+	 */
+	 public void talk() {
 		System.out.println("こんちは！私の名前は、" + this.name + "だよ！");
 	}
 
-	/** 歩いた分体力を消費 */
-	public void walk(int minute) {
+	/**
+	 * 歩いた分体力を消費
+	 * @param minute 歩いた分数
+	 */
+	 public void walk(int minute) {
 		System.out.println(minute + "分散歩したよ！");
-		this.hp -= minute * 20;
+		this.hp -= minute * 2;
 		if (this.hp <= 50) {
 			System.out.println("お腹すいたなぁ、、");
 		}
 	}
 
-	/** 食べ物を食べて回復 */
+	/**
+	 * 食べ物を食べて回復
+	 * @param food 食べ物
+	 * @return 感謝の言葉
+	 */
 	public String eat(String food) {
 		if ("やきにく".equals(food)) {
 			System.out.println("おおおぉぉ!!!!!" + food + "!!!!! ありがとう!!!!!");
@@ -84,10 +90,9 @@ public class Monster {
 
 	/**
 	 * やくそうで回復
-	 * @param plant
+	 * @param plant やくそう
 	 */
-	
-	public void cure(String plant) {
+	 public void cure(String plant) {
 		if (("やくそう".equals(plant) && 70 <= this.hp) || ("特やくそう".equals(plant))) {
 			this.hp = MAX_HP;
 			System.out.println("わーい！全回復！");
