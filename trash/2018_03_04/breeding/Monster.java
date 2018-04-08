@@ -44,21 +44,14 @@ public class Monster {
      public void setHp(int hp) {
         this.hp = hp;
      }
-     /**
-      * コンストラクタ
-      */
-     Monster(){
-     }
-
-     Monster(String name, int hp) {
-         this.name = name;
-         this.hp = hp;
+     
+     Monster() {
+      super();
      }
      
      /**
-       * 名前を出力
-       * @param name 私の名前
-       */
+      * 名前を出力
+      */
      public void talk() {
         System.out.println("こんちは！私の名前は、" + this.name + "だよ！");
     }
@@ -68,8 +61,9 @@ public class Monster {
       * @param minute 歩いた分数
       */
      public void walk(int minute) {
-        System.out.println(minute + "分散歩したよ！");
         this.hp -= minute * 2;
+        System.out.println(minute + "分散歩したよ！");
+        
         if (this.hp <= 50) {
             System.out.println("お腹すいたなぁ、、");
         }
@@ -80,14 +74,14 @@ public class Monster {
       * @param food 食べ物
       * @return 感謝の言葉
       */
-     public String eat(String food) {
-        if ("やきにく".equals(food)) {
-            String a = "おおおぉぉ!!!!!" + food + "!!!!! ありがとう!!!!!";
+     public String eat(String message) {
+        if ("やきにく".equals(message)) {
             this.hp += 100;
+            String a = "おおおぉぉ!!!!!" + message + "!!!!! ありがとう!!!!!";
             return a;
         } else {
-            String b = "おぉ," + food + "をくれるの？ ありがとう!";
             this.hp += 10;
+            String b = "おぉ," + message + "をくれるの？ ありがとう!";
             return b;
         }
     }
